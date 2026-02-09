@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import logoVicelec from "@/assets/logo-vicelec.ico";
+import logoEducanax from "@/assets/logo-educanax.png";
+import logoNumeroPerdido from "@/assets/logo-numeroperdido.png";
+import logoOnesuscribe from "@/assets/logo-onesuscribe.png";
 
 const projects = [
   {
@@ -8,6 +12,7 @@ const projects = [
       "Web corporativa para empresa de electricidad. Diseño profesional con foco en conversión y presencia digital.",
     url: "https://vicelec.eltaxo.com",
     tags: ["Web Corporativa", "Diseño", "SEO"],
+    logo: logoVicelec,
   },
   {
     title: "Educanax",
@@ -15,6 +20,7 @@ const projects = [
       "Plataforma de gestión de documentación educativa para colegios. Automatización y organización de procesos académicos.",
     url: "https://educanax.eltaxo.com",
     tags: ["EdTech", "SaaS", "Gestión"],
+    logo: logoEducanax,
   },
   {
     title: "Número Perdido",
@@ -22,6 +28,7 @@ const projects = [
       "Juego mobile basado en mi propio juego de mesa. Experiencia lúdica digital con mecánicas originales.",
     url: "https://app.numeroperdido.com",
     tags: ["Gaming", "Mobile", "Juego de Mesa"],
+    logo: logoNumeroPerdido,
   },
   {
     title: "OneSuscribe",
@@ -29,6 +36,7 @@ const projects = [
       "WebApp de optimización de plataformas de streaming. Ahorra dinero gestionando y compartiendo tus suscripciones.",
     url: "https://onesuscribe.eltaxo.com",
     tags: ["Streaming", "Optimización", "WebApp"],
+    logo: logoOnesuscribe,
   },
 ];
 
@@ -69,9 +77,16 @@ const ProjectsSection = () => {
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-display font-bold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={project.logo}
+                      alt={`${project.title} logo`}
+                      className="w-12 h-12 rounded-lg object-contain bg-secondary/50 p-1"
+                    />
+                    <h3 className="text-2xl font-display font-bold group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
                   <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 mt-1" />
                 </div>
 
