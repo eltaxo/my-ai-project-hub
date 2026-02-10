@@ -5,6 +5,9 @@ import logoVicelec from "@/assets/logo-vicelec.ico";
 import logoEducanax from "@/assets/logo-educanax.png";
 import logoNumeroPerdido from "@/assets/logo-numeroperdido.png";
 import logoOnesuscribe from "@/assets/logo-onesuscribe.png";
+import logoLaligaFantasy from "@/assets/logo-laliga-fantasy.png";
+import logoMachinepoint from "@/assets/logo-machinepoint.png";
+import logoTabletopCreator from "@/assets/logo-tabletop-creator.png";
 
 const projects = [
   {
@@ -46,16 +49,19 @@ const sectureProjects = [
     title: "LaLiga Fantasy",
     description: "Producto de gaming y entretenimiento para LaLiga.",
     tags: ["Gaming", "Entretenimiento"],
+    logo: logoLaligaFantasy,
   },
   {
     title: "MachinePoint",
     description: "Motor de marketing automatizado con recomendadores inteligentes basados en IA.",
     tags: ["AI", "Marketing", "Data"],
+    logo: logoMachinepoint,
   },
   {
     title: "Tabletop Creator",
     description: "Plataforma de creación de juegos de mesa digitales.",
     tags: ["Gaming", "Creatividad"],
+    logo: logoTabletopCreator,
   },
   {
     title: "AliWood",
@@ -112,12 +118,21 @@ const SectureProjects = () => {
 
       {/* Always show first 3 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {sectureProjects.slice(0, 3).map((project, i) => (
+        {sectureProjects.slice(0, 3).map((project) => (
           <div
             key={project.title}
             className="glass rounded-xl p-5 hover:border-primary/30 transition-colors"
           >
-            <h4 className="font-display font-bold text-base mb-1">{project.title}</h4>
+            <div className="flex items-center gap-3 mb-2">
+              {project.logo && (
+                <img
+                  src={project.logo}
+                  alt={`${project.title} logo`}
+                  className="w-8 h-8 rounded-md object-contain bg-secondary/50 p-0.5 flex-shrink-0"
+                />
+              )}
+              <h4 className="font-display font-bold text-base">{project.title}</h4>
+            </div>
             <p className="text-muted-foreground text-xs font-body mb-3">{project.description}</p>
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (

@@ -60,7 +60,7 @@ const HeroSection = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
               className="text-xl lg:text-2xl text-muted-foreground font-body font-light mb-8"
             >
-              Technical Product Manager · Data & AI Solutions
+              Project Manager · Data & AI Solutions
             </motion.p>
 
             <motion.div

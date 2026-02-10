@@ -1,12 +1,20 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import logoSecture from "@/assets/logo-secture.png";
+import logoLapizka from "@/assets/logo-lapizka.png";
+import logoEndado from "@/assets/logo-endado.png";
+import logoSingularu from "@/assets/logo-singularu.png";
+import logoEslife from "@/assets/logo-eslife.png";
+import logoOzongo from "@/assets/logo-ozongo.png";
+import logoDemini from "@/assets/logo-demini.png";
 
 const experiences = [
   {
-    role: "Technical Project Manager",
+    role: "Project Manager",
     company: "Secture",
     period: "Nov 2021 – Presente",
+    logo: logoSecture,
     highlights: [
       "Desarrollo end-to-end de productos digitales de alto impacto",
       "Soluciones AI: recomendadores inteligentes, motores de marketing automatizado (MachinePoint)",
@@ -22,6 +30,7 @@ const experiences = [
     role: "Responsable de Operaciones",
     company: "Lapizka Catering",
     period: "Oct 2020 – Nov 2021",
+    logo: logoLapizka,
     highlights: [
       "Visión estratégica logística: planificación y coordinación para superar objetivos",
       "Definición de procesos operativos en planta de producción",
@@ -37,6 +46,7 @@ const experiences = [
     role: "Operations & Logistics Manager (COO)",
     company: "Endado",
     period: "Jul 2016 – Sep 2020",
+    logo: logoEndado,
     highlights: [
       "Escalado a +300.000 referencias de producto",
       "#165 en FT 1000 empresas de más rápido crecimiento en Europa",
@@ -51,6 +61,7 @@ const experiences = [
     role: "Product Owner & Project Manager",
     company: "Singularu",
     period: "Ene 2016 – May 2016",
+    logo: logoSingularu,
     highlights: [
       "Product Owner bajo SCRUM y Lean Startup",
     ],
@@ -63,6 +74,7 @@ const experiences = [
     role: "Operations & Customer Service Manager (COO)",
     company: "EsLife",
     period: "Feb 2014 – Dic 2015",
+    logo: logoEslife,
     highlights: [
       "Dashboards avanzados y automatización con MySQL y Excel",
     ],
@@ -75,6 +87,7 @@ const experiences = [
     role: "Director Área Soporte y Atención al Cliente",
     company: "OZONGO.com",
     period: "Abr 2010 – Feb 2014",
+    logo: logoOzongo,
     highlights: [
       "Dirección de equipos de Soporte Técnico y Call Center (+10.000 clientes)",
       "Estrategias y planes de acción ante crisis (SLA)",
@@ -92,6 +105,7 @@ const experiences = [
     role: "Administrador en Sistemas Telemáticos",
     company: "Demini",
     period: "Ago 2009 – Abr 2010",
+    logo: logoDemini,
     highlights: [
       "Administración y mantenimiento de sistemas informáticos",
     ],
@@ -121,9 +135,16 @@ const ExperienceCard = ({ exp, i }: { exp: typeof experiences[0]; i: number }) =
 
       <div className="glass rounded-xl p-6 lg:p-8">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-3 gap-2">
-          <div>
-            <h3 className="font-display font-bold text-xl">{exp.role}</h3>
-            <p className="text-primary font-display font-medium">{exp.company}</p>
+          <div className="flex items-center gap-3">
+            <img
+              src={exp.logo}
+              alt={`${exp.company} logo`}
+              className="w-10 h-10 rounded-lg object-contain bg-secondary/50 p-0.5 flex-shrink-0"
+            />
+            <div>
+              <h3 className="font-display font-bold text-xl">{exp.role}</h3>
+              <p className="text-primary font-display font-medium">{exp.company}</p>
+            </div>
           </div>
           <span className="text-muted-foreground text-sm font-body whitespace-nowrap">
             {exp.period}
