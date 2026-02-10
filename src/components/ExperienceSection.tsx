@@ -19,16 +19,18 @@ const experiences = [
     ],
   },
   {
-    role: "Autónomo – Gestión de Proyectos con IA",
-    company: "Freelance",
-    period: "2023 – Presente",
+    role: "Responsable de Operaciones",
+    company: "Lapizka Catering",
+    period: "Oct 2020 – Nov 2021",
     highlights: [
-      "Consultoría en gestión de proyectos potenciados con inteligencia artificial",
-      "Desarrollo de productos propios: Vicelec, Educanax, Número Perdido, OneSuscribe",
+      "Visión estratégica logística: planificación y coordinación para superar objetivos",
+      "Definición de procesos operativos en planta de producción",
     ],
     expandedHighlights: [
-      "Creación de webs corporativas, plataformas SaaS y apps de gaming",
-      "Automatización de flujos de trabajo con herramientas de IA",
+      "Control integral de trazabilidad de producto",
+      "Implantación de sistema de transporte propio y externo, gestión de transportistas",
+      "Control del etiquetado del producto",
+      "I+D en soluciones para optimizar operativas de fabricación",
     ],
   },
   {
