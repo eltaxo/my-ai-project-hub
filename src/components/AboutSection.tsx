@@ -4,23 +4,23 @@ import { Briefcase, Database, BarChart3, Users } from "lucide-react";
 const skills = [
   {
     icon: Briefcase,
-    title: "Product Management",
-    desc: "Roadmaps, Backlog, Agile (Scrum/Kanban), PRDs",
+    title: "Project Management",
+    desc: "Roadmaps, Backlogs, Agile (Scrum/Kanban), PRDs, Gestión de riesgos",
   },
   {
     icon: Database,
-    title: "Technical Domain",
-    desc: "Data & AI Platforms, MySQL, APIs, Sysadmin",
+    title: "Conocimientos técnicos",
+    desc: "MySQL, Excel, APIs, Sysadmin, Data & AI",
   },
   {
     icon: BarChart3,
-    title: "Analytics",
-    desc: "KPIs, Data-driven decisions, NPS Expert",
+    title: "Analítica",
+    desc: "KPIs, decisiones data-driven, métricas de producto, NPS usuarios",
   },
   {
     icon: Users,
     title: "Soft Skills",
-    desc: "Stakeholder Management, Equipos multiculturales",
+    desc: "Gestión de Stakeholders, Equipos multiculturales, Resolutivo, Capacidad de adaptación, Foco en el cliente y el equipo",
   },
 ];
 

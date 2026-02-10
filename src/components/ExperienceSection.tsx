@@ -139,7 +139,7 @@ const ExperienceCard = ({ exp, i }: { exp: typeof experiences[0]; i: number }) =
             <img
               src={exp.logo}
               alt={`${exp.company} logo`}
-              className="w-10 h-10 rounded-lg object-contain bg-secondary/50 p-0.5 flex-shrink-0"
+              className="w-12 h-12 rounded-lg object-contain bg-transparent flex-shrink-0"
             />
             <div>
               <h3 className="font-display font-bold text-xl">{exp.role}</h3>
