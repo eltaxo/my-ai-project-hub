@@ -71,6 +71,37 @@ const experiences = [
       "Reporting avanzado para toma de decisiones",
     ],
   },
+  {
+    role: "Director Área Soporte y Atención al Cliente",
+    company: "OZONGO.com",
+    period: "Abr 2010 – Feb 2014",
+    highlights: [
+      "Dirección de equipos de Soporte Técnico y Call Center (+10.000 clientes)",
+      "Estrategias y planes de acción ante crisis (SLA)",
+    ],
+    expandedHighlights: [
+      "Control de métricas, Dashboards y KPIs y análisis de resultados",
+      "Herramientas: Zendesk, Excel, MySQL",
+      "Apoyo al equipo de Desarrollo en resolución de incidencias",
+      "Apoyo al equipo de Sistemas en mantenimiento de servidores",
+      "Gestión del Departamento de Microinformática",
+      "Elaboración de Scripts y Queries en MySQL para agilizar procesos",
+    ],
+  },
+  {
+    role: "Administrador en Sistemas Telemáticos",
+    company: "Demini",
+    period: "Ago 2009 – Abr 2010",
+    highlights: [
+      "Administración y mantenimiento de sistemas informáticos",
+    ],
+    expandedHighlights: [
+      "Soporte técnico N1 y N2",
+      "Monitorización con Nagios y MRTG",
+      "Configuración de servicios de backup con Acronis",
+      "Microinformática interna y de redes en clientes",
+    ],
+  },
 ];
 
 const ExperienceCard = ({ exp, i }: { exp: typeof experiences[0]; i: number }) => {
