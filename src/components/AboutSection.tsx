@@ -40,13 +40,14 @@ const AboutSection = () => {
           </p>
           <h2 className="text-3xl lg:text-5xl font-display font-bold mb-6">
             +8 años liderando{" "}
-            <span className="text-gradient">productos digitales</span>
+            <span className="text-gradient">proyectos digitales</span>
           </h2>
           <p className="text-lg text-muted-foreground font-body leading-relaxed">
-            Technical Product Manager con amplia experiencia en ciclos de vida de software end-to-end. 
-            Experto en conectar necesidades de negocio con ejecución técnica en entornos de Data, AI y 
-            Localización. Track record probado gestionando equipos multiculturales y entregando 
-            productos escalables. Actualmente, autónomo especializado en gestión de proyectos con IA.
+            Project Manager con amplia experiencia en ciclos de vida de software end-to-end y 
+            sólido conocimiento en Product Management. Experto en conectar necesidades de negocio 
+            con ejecución técnica en entornos de Data, AI y Localización. Track record probado 
+            gestionando equipos multiculturales y entregando productos escalables, con total 
+            autonomía en la ejecución de proyectos con IA.
           </p>
         </motion.div>
 
