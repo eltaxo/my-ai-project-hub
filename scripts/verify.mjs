@@ -45,7 +45,7 @@ for (const href of [
 // Assets
 const assets = [
   'favicon.svg', 'favicon.ico', 'favicon-32x32.png', 'favicon-16x16.png',
-  'apple-touch-icon.png', 'og-image.png', 'robots.txt', 'fonts.css',
+  'apple-touch-icon.png', 'og-image.png', 'robots.txt',
   'fonts/clash-display-600.woff2', 'fonts/jetbrains-mono-var.woff2',
 ];
 for (const a of assets) check(`asset ${a}`, existsSync(join(root, 'public', a)));

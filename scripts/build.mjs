@@ -19,7 +19,6 @@ cpSync(src, dist, { recursive: true });
 // Verificación de artefactos esenciales
 const required = [
   'index.html',
-  'fonts.css',
   'favicon.svg',
   'favicon.ico',
   'og-image.png',

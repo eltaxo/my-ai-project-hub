@@ -13,6 +13,7 @@
     "node": ">=20"
   },
   "dependencies": {
+    "lighthouse": "^12.8.2",
     "playwright": "^1.63.0"
   }
 }

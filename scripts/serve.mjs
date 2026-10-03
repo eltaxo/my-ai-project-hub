@@ -1,6 +1,7 @@
 // Servidor local de desarrollo — sirve public/ en http://127.0.0.1:8080
 // Para QA con playwright: capturas, reduced-motion, teclado.
 import { createServer } from 'node:http';
+import { createGzip } from 'node:zlib';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
@@ -19,6 +20,10 @@ const MIME = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
+function acceptsGzip(req) {
+  return /gzip/.test(req.headers['accept-encoding'] || '');
+}
+
 createServer((req, res) => {
   let path = req.url.split('?')[0];
   if (path === '/') path = '/index.html';
@@ -28,6 +33,18 @@ createServer((req, res) => {
     return;
   }
   const type = MIME[extname(file)] || 'application/octet-stream';
-  res.writeHead(200, { 'Content-Type': type });
-  res.end(readFileSync(file));
+  const buf = readFileSync(file);
+  const cacheable = extname(file) !== '.html' && extname(file) !== '.txt';
+  const headers = {
+    'Content-Type': type,
+    'Cache-Control': cacheable ? 'public, max-age=31536000, immutable' : 'no-cache',
+  };
+  if (acceptsGzip(req) && buf.length > 500) {
+    headers['Content-Encoding'] = 'gzip';
+    res.writeHead(200, headers);
+    createGzip({ level: 9 }).end(buf).pipe(res);
+  } else {
+    res.writeHead(200, headers);
+    res.end(buf);
+  }
 }).listen(port, () => console.log(`sirviendo public/ en http://127.0.0.1:${port}`));
