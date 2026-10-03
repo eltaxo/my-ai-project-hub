@@ -1,6 +1,9 @@
 // QA de eltaxo.com — criterios de aceptación del briefing §6.
 // Ejecutar con el servidor local: npm run serve (puerto 8080).
 const { chromium } = require('playwright');
+// Binario completo de Chromium (el headless_shell de playwright carece de
+// librerías de sistema en este sandbox). Ruta fija del caché de playwright.
+const CHROME = '/app-data/home/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome';
 const https = require('node:https');
 
 const BASE = 'http://127.0.0.1:8080';
@@ -12,7 +15,7 @@ const log = (name, ok, detail = '') => {
 };
 
 (async () => {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({ executablePath: CHROME });
 
   // ============ 1. Carga, consola, CLS, fuentes ============
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } });

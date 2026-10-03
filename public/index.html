@@ -298,6 +298,14 @@ footer .eof{color:var(--accent)}
   .entry{grid-template-columns:1fr;gap:16px}
   .entry .arrow{display:none}
 }
+@media(max-width:639px){
+  /* Dirección de arte (Aurora): a <640px el sec-head apila
+     label → titular → meta (columna editorial), no wrap a la deriva.
+     La escala del h2 no se toca; el count se lee como meta-line
+     del titular, alineado a la izquierda (reset del margin-left:auto). */
+  .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .sec-head .count{margin-left:0}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:120ms!important;transition-duration:120ms!important;scroll-behavior:auto!important}
   html{scroll-behavior:auto}
