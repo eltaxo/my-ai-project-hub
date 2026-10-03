@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# QA local (capturas y script de verificación con playwright)
+qa/shot-*.png
+node_modules/
