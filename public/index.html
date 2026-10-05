@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alberto Aznar — Product Manager · FDE · Continuidad de negocio</title>
-<meta name="description" content="Product Manager con +8 años construyendo producto digital end-to-end. Forward Deployed Engineer: implemento IA en empresas analizando y automatizando sus procesos. Consultoría de continuidad de negocio. Desde 2009, sin parar.">
+<title>Alberto Aznar · Product Manager · COO · FDE · Continuidad de negocio</title>
+<meta name="description" content="En digital desde 2009. La mayor parte de mi carrera como director de operaciones: atención al cliente, logística, operativa completa y e-commerce. Ahora trabajo como Product Manager, implemento IA en las empresas como FDE y hago consultoría de continuidad de negocio.">
 <meta name="author" content="Alberto Aznar">
 <link rel="canonical" href="https://eltaxo.com/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Alberto Aznar — Product Manager · FDE · Continuidad de negocio">
-<meta property="og:description" content="Del roadmap al deploy. Product Manager, Forward Deployed Engineer y continuidad de negocio. +8 años, 11 proyectos shipped, +300K refs escaladas, #165 FT1000 Europa.">
+<meta property="og:title" content="Alberto Aznar · Product Manager · COO · FDE · Continuidad de negocio">
+<meta property="og:description" content="Product Manager y COO. En digital desde 2009: operaciones, producto e IA en cliente. 11 proyectos entregados, +300K referencias escaladas, #165 FT1000 Europa.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://eltaxo.com/">
 <meta property="og:image" content="https://eltaxo.com/og-image.png">
@@ -20,8 +20,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alberto Aznar — Product Manager · FDE · Continuidad de negocio">
-<meta name="twitter:description" content="Del roadmap al deploy. Portfolio como release log: proyectos shipped, trayectoria en commits.">
+<meta name="twitter:title" content="Alberto Aznar · Product Manager · COO · FDE · Continuidad de negocio">
+<meta name="twitter:description" content="Portfolio como release log: proyectos entregados, trayectoria en commits. Product Manager · COO · FDE · Continuidad de negocio.">
 <meta name="twitter:image" content="https://eltaxo.com/og-image.png">
 
 <!-- Favicon -->
@@ -39,9 +39,9 @@
 <!-- Theme color -->
 <meta name="theme-color" content="#0B0D10">
 <style>
-/* eltaxo.com — fuentes self-host (decisión de Alberto: self-host, font-display: swap)
+/* eltaxo.com · fuentes self-host (decisión de Alberto: self-host, font-display: swap)
    Clash Display + General Sans: Fontshare, OFL. JetBrains Mono: variable oficial
-   (wght 100-800), subsetting a codepoints del copy v1.4 + ASCII + latin-ext + símbolos.
+   (wght 100-800), subsetting a codepoints del copy + ASCII + latin-ext + símbolos.
    Total: 7 archivos woff2, ~160KB. */
 
 @font-face {
@@ -119,11 +119,11 @@ a{color:inherit;text-decoration:none}
 .container{max-width:1280px;margin-inline:auto;padding-inline:6vw}
 .mono{font-family:var(--font-mono)}
 
-/* skip link — accesibilidad teclado */
+/* skip link · accesibilidad teclado */
 .skip-link{position:fixed;top:-48px;left:16px;z-index:10001;background:var(--accent);color:var(--bg-base);font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border-radius:999px;transition:top var(--t-fast) var(--ease-out)}
 .skip-link:focus-visible{top:16px;outline:2px solid var(--fg-primary);outline-offset:3px}
 
-/* focus-visible global — ring verde 2px offset (SPEC §7) */
+/* focus-visible global · ring verde 2px offset (SPEC §7) */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
 /* ===== Preloader ===== */
@@ -148,7 +148,7 @@ nav ul a[aria-current="true"]{color:var(--fg-primary)}
 nav ul a.active::after,nav ul a[aria-current="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent)}
 nav ul a .n{color:var(--accent);margin-right:6px;font-size:.65rem}
 
-/* hamburguesa móvil — accesible */
+/* hamburguesa móvil · accesible */
 #burger{display:none;background:none;border:1px solid var(--border-hi);border-radius:8px;width:44px;height:44px;cursor:pointer;position:relative;z-index:10002}
 #burger .bars,#burger .bars::before,#burger .bars::after{display:block;width:18px;height:2px;background:var(--fg-primary);content:"";position:absolute;left:12px;transition:transform var(--t-fast) var(--ease-io),opacity var(--t-fast),top var(--t-fast)}
 #burger .bars{top:15px}
@@ -165,17 +165,17 @@ nav ul a .n{color:var(--accent);margin-right:6px;font-size:.65rem}
 #mobile-menu a:hover .n{transform:none}
 #mobile-menu .mm-foot{position:absolute;bottom:32px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted)}
 
-/* ===== Hero ===== */
-header.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;padding-top:120px}
+/* ===== Hero · altura natural en todas las pantallas (dirección de arte v1.8) ===== */
+header.hero{display:flex;flex-direction:column;justify-content:flex-start;position:relative;padding-top:clamp(96px,12vh,140px);padding-bottom:clamp(48px,7vh,88px)}
 .hero-status{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);border:1px solid color-mix(in srgb,var(--accent-2) 35%,transparent);border-radius:999px;padding:8px 16px;width:max-content;margin-bottom:var(--s-4,32px)}
 .hero-status .dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgb(255 180 84/.5)}50%{box-shadow:0 0 0 8px rgb(255 180 84/0)}}
-.hero-line{overflow:hidden}
-.hero-line h1{font-family:var(--font-display);font-weight:600;font-size:var(--fs-hero);line-height:.92;letter-spacing:-.02em;text-transform:uppercase;transform:translateY(110%);animation:riseUp 800ms var(--ease-out) forwards}
+.hero-line{overflow:hidden;padding:.06em 0}
+.hero-line h1{font-family:var(--font-display);font-weight:600;font-size:var(--fs-hero);line-height:.92;letter-spacing:-.02em;text-transform:uppercase;transform:translateY(125%);animation:riseUp 800ms var(--ease-out) forwards}
 .hero-line:nth-child(2){margin-left:clamp(24px,8vw,140px)}
 .hero-line:nth-child(2) h1{animation-delay:90ms;color:transparent;-webkit-text-stroke:1.5px var(--fg-primary)}
 @keyframes riseUp{to{transform:translateY(0)}}
-.hero-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:24px;margin-top:40px;padding-bottom:64px;opacity:0;animation:fadeIn 600ms var(--ease-out) 700ms forwards}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:24px;margin-top:40px;opacity:0;animation:fadeIn 600ms var(--ease-out) 700ms forwards}
 @keyframes fadeIn{to{opacity:1}}
 .hero-meta .tag{font-size:var(--fs-d2);font-family:var(--font-display);font-weight:500}
 .hero-meta .tag em{font-style:normal;color:var(--accent)}
@@ -183,9 +183,9 @@ header.hero{min-height:100svh;display:flex;flex-direction:column;justify-content
 .cursor{display:inline-block;width:.55em;height:1em;background:var(--accent);vertical-align:-.12em;animation:blink 1s steps(1) infinite;margin-left:2px}
 @keyframes blink{50%{opacity:0}}
 
-/* metrics strip */
+/* metrics strip · líneas a sangre, celdas al ancho del container */
 .metrics{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-inset)}
-.metrics .grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.metrics .grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1280px;margin-inline:auto;padding-inline:6vw;box-sizing:border-box}
 .metric{padding:40px 32px;border-right:1px solid var(--border);opacity:0;transform:translateY(24px);transition:opacity 600ms var(--ease-out),transform 600ms var(--ease-out)}
 .metric:last-child{border-right:0}
 .metric.in{opacity:1;transform:none}
@@ -244,7 +244,7 @@ section[id]{scroll-margin-top:72px}
 .subnote{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin:48px 0 16px;display:flex;align-items:center;gap:12px}
 .subnote::after{content:"";flex:1;height:1px;background:var(--border)}
 
-/* git log (experience) */
+/* git log (experience) · diffs siempre visibles (dirección de arte v1.8) */
 .gitlog{position:relative;padding-left:clamp(24px,4vw,48px)}
 .gitlog::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
 .commit{position:relative;padding:32px 0;border-bottom:1px solid var(--border)}
@@ -256,12 +256,9 @@ section[id]{scroll-margin-top:72px}
 .commit.current .meta .msg{color:var(--accent-2)}
 .commit h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;line-height:1.2}
 .commit .org{color:var(--fg-muted);font-size:.95rem;margin-top:2px}
-.commit ul{list-style:none;margin-top:14px;display:none}
-.commit.open ul{display:block}
+.commit ul{list-style:none;margin-top:14px;display:block}
 .commit ul li{font-family:var(--font-mono);font-size:.8rem;color:var(--fg-muted);padding:5px 0 5px 22px;position:relative}
 .commit ul li::before{content:"+";position:absolute;left:0;color:var(--accent);font-weight:700}
-.commit button.more{margin-top:12px;background:none;border:1px solid var(--border-hi);border-radius:999px;color:var(--fg-muted);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 16px;cursor:pointer;transition:all var(--t-fast)}
-.commit button.more:hover{border-color:var(--accent);color:var(--accent)}
 .commit .daterange{font-family:var(--font-mono);font-size:.7rem;color:var(--fg-muted)}
 
 /* Deploy / contact */
@@ -299,41 +296,29 @@ footer .eof{color:var(--accent)}
   .entry .arrow{display:none}
 }
 @media(max-width:639px){
-  /* Dirección de arte (Aurora): defecto latente del mockup a móviles altos
-     resuelto con A + C + ajuste de altura — la usabilidad no se sacrifica
-     por el efecto, pero el concepto no se vende barato:
-     A: la type ES el layout también en móvil — el nombre CRECE (4.5rem mín).
-     88svh: héroe móvil casi-pantalla, no pantalla — el usuario no paga
-     330px de nada por swipe; el nombre sigue aterrizando pegado a las
-     métricas (la secuencia nombre→count-up, intacta).
-     C: meta compacto. Desktop (≥768) intacto — ahí el vacío es composición. */
-  :root{--fs-hero:clamp(4.5rem,15vw,11rem)}
-  /* Dirección de arte (Aurora, tras ver 80svh en el móvil real de Alberto):
-     héroe "aterrizaje corto" en móvil — el stack empieza arriba (chip bajo
-     el nav, nombre, meta compacto) y las métricas asoman en el primer
-     frame. El nombre sigue siendo el statement; el aterrizaje sobre el
-     count-up se mantiene. Desktop ≥768 intacto (flex-end, 100svh). */
-  header.hero{min-height:80svh;justify-content:flex-start}
-  .hero-meta{padding-bottom:40px;gap:20px}
   /* Dirección de arte (Aurora): a <640px el sec-head apila
      label → titular → meta (columna editorial), no wrap a la deriva.
      La escala del h2 no se toca; el count se lee como meta-line
      del titular, alineado a la izquierda (reset del margin-left:auto). */
-  .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
-  .sec-head .count{margin-left:0}
+  :root{--fs-hero:clamp(4.5rem,15vw,11rem)}
+  header.hero{padding-top:88px;padding-bottom:48px}
+  .hero-meta{gap:20px}
   /* Dirección de arte (Aurora): chip hero-status envuelto con corte
-     controlado en el guión largo (estado arriba, rol debajo) — no
-     wrap natural, que rompería en "Product / Manager". Radio 12px
+     controlado tras "Secture" (empresa arriba, roles debajo) · no
+     wrap natural, que rompería a mitad de palabra. Radio 12px
      solo al envolver: píldora a dos líneas se vería hinchada.
      Desktop (una línea): píldora 999px exacta al mockup. */
   .hero-status{max-width:100%;border-radius:12px}
   .hero-status .br{display:block;margin-top:2px}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .sec-head .count{margin-left:0}
 }
+@media(min-width:1920px){:root{--fs-hero:clamp(4.5rem,13vw,15rem)}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:120ms!important;transition-duration:120ms!important;scroll-behavior:auto!important}
   html{scroll-behavior:auto}
   .hero-line h1{transform:none}
-  /* Animaciones decorativas: detenidas, no aceleradas —
+  /* Animaciones decorativas: detenidas, no aceleradas ·
      blink/pulse a 120ms serían ~4 parpadeos/s (umbral WCAG 2.3.1: 3/s) */
   .cursor{animation:none}
   .hero-status .dot,.status.live::before{animation:none}
@@ -353,7 +338,7 @@ footer .eof{color:var(--accent)}
 
 <nav aria-label="Principal">
   <div class="inner">
-    <a href="#top" class="logo" aria-label="Inicio — eltaxo.com">~/el<span>taxo</span></a>
+    <a href="#top" class="logo" aria-label="Inicio · eltaxo.com">~/el<span>taxo</span></a>
     <ul>
       <li><a href="#readme" class="spy"><span class="n">01</span>README</a></li>
       <li><a href="#releases" class="spy"><span class="n">02</span>RELEASES</a></li>
@@ -371,23 +356,23 @@ footer .eof{color:var(--accent)}
   <a href="#releases" class="mm-link"><span class="n">02</span>RELEASES</a>
   <a href="#log" class="mm-link"><span class="n">03</span>LOG</a>
   <a href="#deploy" class="mm-link"><span class="n">04</span>DEPLOY</a>
-  <div class="mm-foot">~/eltaxo — build v2026.10</div>
+  <div class="mm-foot">~/eltaxo · build v2026.10</div>
 </div>
 
 <header class="hero container" id="top">
-  <div class="hero-status"><span class="dot"></span><span>LIVE · Secture — <span class="br">Product Manager · FDE</span></span></div>
+  <div class="hero-status"><span class="dot"></span><span>LIVE · Secture <span class="br">Product Manager · COO · FDE</span></span></div>
   <div class="hero-line"><h1>Alberto</h1></div>
   <div class="hero-line"><h1>Aznar</h1></div>
   <div class="hero-meta">
-    <p class="tag">Del roadmap al <em>deploy</em>.<br>Desde 2009, sin parar.</p>
-    <p class="cmd">$ whoami<span class="cursor"></span><br>Product Manager · FDE · Continuidad de negocio — San Sebastián de los Reyes, Madrid</p>
+    <p class="tag">Product Manager <em>· COO</em></p>
+    <p class="cmd">$ whoami<span class="cursor"></span><br>Product Manager · COO · FDE · Continuidad de negocio · San Sebastián de los Reyes, Madrid</p>
   </div>
 </header>
 
 <div class="metrics" id="metrics">
   <div class="grid">
-    <div class="metric"><div class="num" data-count="8" data-prefix="+">+0</div><div class="lbl">años shipping</div></div>
-    <div class="metric"><div class="num" data-count="11">0</div><div class="lbl">proyectos shipped</div></div>
+    <div class="metric"><div class="num" data-count="17" data-prefix="+">+0</div><div class="lbl">años en digital</div></div>
+    <div class="metric"><div class="num" data-count="11">0</div><div class="lbl">proyectos entregados</div></div>
     <div class="metric"><div class="num" data-count="300" data-suffix="K" data-prefix="+">+0K</div><div class="lbl">refs escaladas (Endado)</div></div>
     <div class="metric"><div class="num" data-count="165" data-prefix="#">#0</div><div class="lbl">FT1000 Europa</div></div>
   </div>
@@ -396,17 +381,18 @@ footer .eof{color:var(--accent)}
 <main id="main">
 <section id="readme">
   <div class="container">
-    <div class="sec-head rv"><span class="ver">v01 — README</span><h2>Sobre mí</h2><span class="count">// 3 roles</span></div>
+    <div class="sec-head rv"><span class="ver">v01 · README</span><h2>Sobre mí</h2><span class="count">// 3 roles</span></div>
     <div class="readme">
       <div class="rv">
-        <p class="lead">Product Manager con <strong>+8 años</strong> construyendo producto digital end-to-end. Como <strong>Forward Deployed Engineer</strong> implemento soluciones de IA directamente en las empresas: analizo sus procesos y flujos para automatizarlos. Y en consultoría de <strong>continuidad de negocio</strong>, aseguro que lo construido aguante lo que venga.</p>
+        <p class="lead">Llevo desde 2009 trabajando en digital. La mayor parte de mi carrera fui <strong>director de operaciones</strong>: equipos de atención al cliente y logística, operativa completa, e-commerce. Desde hace años trabajo como <strong>Product Manager</strong>. Como <strong>FDE</strong> implemento IA en las empresas: miro cómo trabajan y automatizo lo que se puede. También hago <strong>consultoría de continuidad de negocio</strong>. Ahora mismo, para un gran retailer de alimentación.</p>
       </div>
       <div class="stackbox rv">
         <div class="ttl">alberto.config <span class="dots"><i style="background:#FF5F57"></i><i style="background:#FFBD2E"></i><i style="background:#28C840"></i></span></div>
-        <div class="row"><div class="k">// product_manager</div><div class="v">Consultoría: modelo de negocio · mercado · competencia · MVP → Roadmaps · Backlogs · Scrum/Kanban · PRDs · KPIs · Riesgos</div></div>
-        <div class="row"><div class="k">// forward_deployed_engineer</div><div class="v">IA en cliente: análisis de procesos y flujos → automatización</div></div>
-        <div class="row"><div class="k">// continuity</div><div class="v">Continuidad de negocio · caso de éxito: gran retailer de alimentación</div></div>
-        <div class="row"><div class="k">// ai</div><div class="v">Teros — agentes de IA que ejecutan trabajo · Claude — LLM &amp; Claude Code</div></div>
+        <div class="row"><div class="k">// product_manager</div><div class="v">Modelo de negocio · mercado · competencia · MVP · Roadmaps · Backlogs · Scrum/Kanban · PRDs · KPIs</div></div>
+        <div class="row"><div class="k">// director_de_operaciones</div><div class="v">Atención al cliente · Logística · Operativa completa · E-commerce</div></div>
+        <div class="row"><div class="k">// forward_deployed_engineer</div><div class="v">IA en cliente: mirar cómo trabajan y automatizar lo que se puede</div></div>
+        <div class="row"><div class="k">// continuidad</div><div class="v">Continuidad de negocio · cliente actual: gran retailer de alimentación</div></div>
+        <div class="row"><div class="k">// ia</div><div class="v">Teros · Claude · Claude Code</div></div>
         <div class="row"><div class="k">// stack</div><div class="v">MySQL · Excel · APIs · Sysadmin · Data</div></div>
       </div>
     </div>
@@ -415,7 +401,7 @@ footer .eof{color:var(--accent)}
 
 <section id="releases">
   <div class="container">
-    <div class="sec-head rv"><span class="ver">v02 — RELEASES</span><h2>Lo que he construido</h2><span class="count">// 3 releases</span></div>
+    <div class="sec-head rv"><span class="ver">v02 · RELEASES</span><h2>Lo que he construido</h2><span class="count">// 3 releases</span></div>
     <div class="log">
       <a class="entry rv" href="https://psicologiayorientacion.es" target="_blank" rel="noopener">
         <div class="hash">feat/2026<span class="h">f1b9e07</span></div>
@@ -447,12 +433,12 @@ footer .eof{color:var(--accent)}
       </a>
     </div>
 
-    <div class="subnote rv">// en_secture — proyectos gestionados (08)</div>
+    <div class="subnote rv">// en_secture · proyectos gestionados (08)</div>
     <div class="log">
       <a class="entry rv" href="https://aliwood.com/es" target="_blank" rel="noopener">
         <div class="hash">mgmt/2026<span class="h">d4c8a12</span></div>
         <div>
-          <h3>AliWood <span class="status live">Live</span></h3>
+          <h3>AliWood</h3>
           <p>Plataforma de streaming de cine español. Desarrollo end-to-end: web y apps nativas iOS/Android.</p>
           <div class="tags"><span class="tagchip">Streaming</span><span class="tagchip">Apps nativas</span><span class="tagchip">Video</span></div>
         </div>
@@ -491,82 +477,79 @@ footer .eof{color:var(--accent)}
 
 <section id="log">
   <div class="container">
-    <div class="sec-head rv"><span class="ver">v03 — GIT LOG</span><h2>Mi trayectoria</h2><span class="count">// 7 commits</span></div>
+    <div class="sec-head rv"><span class="ver">v03 · GIT LOG</span><h2>Mi trayectoria</h2><span class="count">// 8 commits</span></div>
     <div class="gitlog">
       <article class="commit current rv">
         <div class="meta"><span class="msg">feat: producto · IA en cliente · continuidad</span><span class="daterange">Nov 2021 → presente</span></div>
         <h3>Product Manager · FDE</h3>
         <div class="org">Secture</div>
-        <ul id="diff-1">
-          <li>Desarrollo end-to-end de productos digitales de alto impacto</li>
-          <li>FDE: implementación de soluciones de IA en cliente — análisis de procesos y flujos → automatización</li>
-          <li>Consultoría de continuidad de negocio para operaciones resilientes</li>
-          <li>Caso de éxito en continuidad de negocio: gran retailer del sector alimentación</li>
-          <li>Soluciones AI: recomendadores inteligentes, motores de marketing automatizado (MachinePoint)</li>
+        <ul>
+          <li>Gestión de producto digital de principio a fin</li>
+          <li>Implemento IA en cliente: miro cómo trabajan y automatizo lo que se puede</li>
+          <li>Consultoría de continuidad de negocio · cliente actual: gran retailer de alimentación</li>
         </ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-1">diff</button>
       </article>
       <article class="commit rv">
-        <div class="meta"><span class="msg">ops: producción &amp; logística</span><span class="daterange">Oct 2020 → Nov 2021</span></div>
+        <div class="meta"><span class="msg">ops: atención al cliente y logística</span><span class="daterange">Oct 2020 → Nov 2021</span></div>
         <h3>Responsable de Operaciones</h3>
         <div class="org">Lapizka Catering</div>
-        <ul id="diff-2">
-          <li>Visión estratégica logística: planificación y coordinación para superar objetivos</li>
+        <ul>
+          <li>Planificación y coordinación logística para superar objetivos</li>
           <li>Definición de procesos operativos en planta de producción</li>
         </ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-2">diff</button>
       </article>
       <article class="commit rv">
         <div class="meta"><span class="msg">scale: +300.000 referencias</span><span class="daterange">Jul 2016 → Sep 2020</span></div>
         <h3>Operations &amp; Logistics Manager (COO)</h3>
         <div class="org">Endado</div>
-        <ul id="diff-3">
+        <ul>
           <li>Escalado a +300.000 referencias de producto</li>
           <li>#165 en FT 1000 empresas de más rápido crecimiento en Europa</li>
         </ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-3">diff</button>
       </article>
       <article class="commit rv">
         <div class="meta"><span class="msg">agile: SCRUM · lean</span><span class="daterange">Ene 2016 → May 2016</span></div>
         <h3>Product Owner &amp; Project Manager</h3>
         <div class="org">Singularu</div>
-        <ul id="diff-4"><li>Product Owner bajo SCRUM y Lean Startup</li></ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-4">diff</button>
+        <ul><li>Product Owner bajo SCRUM y Lean Startup</li></ul>
       </article>
       <article class="commit rv">
         <div class="meta"><span class="msg">data: dashboards &amp; automatización</span><span class="daterange">Feb 2014 → Dic 2015</span></div>
         <h3>Operations &amp; Customer Service Manager (COO)</h3>
         <div class="org">EsLife</div>
-        <ul id="diff-5"><li>Dashboards avanzados y automatización con MySQL y Excel</li></ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-5">diff</button>
+        <ul><li>Dashboards avanzados y automatización con MySQL y Excel</li></ul>
       </article>
       <article class="commit rv">
-        <div class="meta"><span class="msg">support: +10.000 clientes</span><span class="daterange">Abr 2010 → Feb 2014</span></div>
+        <div class="meta"><span class="msg">ops: atención al cliente y logística</span><span class="daterange">Abr 2010 → Feb 2014</span></div>
         <h3>Director Área Soporte y Atención al Cliente</h3>
         <div class="org">OZONGO.com</div>
-        <ul id="diff-6">
+        <ul>
           <li>Dirección de equipos de Soporte Técnico y Call Center (+10.000 clientes)</li>
-          <li>Estrategias y planes de acción ante crisis (SLA)</li>
+          <li>Planes de acción ante crisis y SLA</li>
         </ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-6">diff</button>
       </article>
       <article class="commit rv">
         <div class="meta"><span class="msg">init: sistemas telemáticos</span><span class="daterange">Ago 2009 → Abr 2010</span></div>
         <h3>Administrador en Sistemas Telemáticos</h3>
         <div class="org">Demini</div>
-        <ul id="diff-7"><li>Administración y mantenimiento de sistemas informáticos</li></ul>
-        <button class="more" aria-expanded="false" aria-controls="diff-7">diff</button>
+        <ul><li>Administración y mantenimiento de sistemas informáticos</li></ul>
       </article>
-      <div class="subnote rv" style="margin-top:24px">// educación — Grado Superior en Administración de Sistemas Informáticos · IES Abastos · 2007–2009</div>
+      <article class="commit rv">
+        <div class="meta"><span class="msg">init: atención al cliente</span><span class="daterange">2008 → 2010</span></div>
+        <h3>Director de Operaciones</h3>
+        <div class="org">The Mini Ofango</div>
+        <ul><li>Empecé en digital dirigiendo el área de atención al cliente</li></ul>
+      </article>
+      <div class="subnote rv" style="margin-top:24px">// educación · Grado Superior en Administración de Sistemas Informáticos · IES Abastos · 2007–2009</div>
     </div>
   </div>
 </section>
 
 <section id="deploy">
   <div class="container">
-    <div class="sec-head rv"><span class="ver">v04 — DEPLOY</span><h2>Contacto</h2><span class="count">// exit 0</span></div>
+    <div class="sec-head rv"><span class="ver">v04 · DEPLOY</span><h2>Contacto</h2><span class="count">// exit 0</span></div>
     <div class="deploy rv">
-      <div class="bar"><i></i><i></i><i></i> ~/eltaxo — bash</div>
+      <div class="bar"><i></i><i></i><i></i> ~/eltaxo · bash</div>
       <div class="body">
         <h2>¿Hablamos<em>_</em></h2>
         <p>Si tienes un proyecto en mente o quieres colaborar, estaré encantado de escucharte.</p>
@@ -587,7 +570,7 @@ footer .eof{color:var(--accent)}
 <footer>
   <div class="container inner">
     <span class="eof">EOF</span>
-    <span>© 2026 Alberto Aznar — todos los derechos reservados</span>
+    <span>© 2026 Alberto Aznar · todos los derechos reservados</span>
     <span>build v2026.10 · SHIP/LOG</span>
   </div>
 </footer>
@@ -671,15 +654,6 @@ function countUp(m){
     if(k<1)requestAnimationFrame(tick);
   })(t0);
 }
-
-// Commit diff toggle
-document.querySelectorAll('.commit .more').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const c=b.closest('.commit'),open=c.classList.toggle('open');
-    b.setAttribute('aria-expanded',open);
-    b.textContent=open?'hide diff':'diff';
-  });
-});
 
 // Scroll-spy nav (con aria-current)
 const spyLinks=[...document.querySelectorAll('nav .spy')];

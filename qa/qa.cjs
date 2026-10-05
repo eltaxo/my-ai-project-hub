@@ -64,19 +64,24 @@ const log = (name, ok, detail = '') => {
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 3));
   await page.waitForTimeout(1800);
   const metricVals = await page.$$eval('.metric .num', els => els.map(e => e.textContent));
-  log('count-up métricas', JSON.stringify(metricVals) === JSON.stringify(['+8','11','+300K','#165']),
+  log('count-up métricas', JSON.stringify(metricVals) === JSON.stringify(['+17','11','+300K','#165']),
     metricVals.join(' | '));
 
-  // botón diff
-  await page.click('.commit .more');
-  const expanded = await page.getAttribute('.commit .more', 'aria-expanded');
-  log('botón diff expande (aria-expanded)', expanded === 'true', `aria-expanded=${expanded}`);
-  await page.click('.commit .more');
+  // diffs del gitlog siempre visibles (v1.8): sin botón, ul visible de serie
+  const diffsVisible = await page.$$eval('.commit ul', els => els.map(e => getComputedStyle(e).display));
+  log('diffs del gitlog siempre visibles', diffsVisible.every(d => d === 'block') && diffsVisible.length === 8,
+    `${diffsVisible.length}/8 commits, display=${diffsVisible[0]}`);
+  const noDiffButtons = await page.$$eval('.commit button.more', els => els.length);
+  log('sin botones diff en el DOM', noDiffButtons === 0, `${noDiffButtons} botones`);
 
-  // scroll-spy
+  // scroll-spy — el smooth scroll animado tarda >600ms en una página alta
+  // (v1.8: 8 commits con diffs siempre visibles). Esperamos al asentamiento.
   await page.evaluate(() => document.querySelector('#deploy').scrollIntoView());
-  await page.waitForTimeout(600);
-  const activeSpy = await page.$eval('nav .spy.active', a => a.getAttribute('href'));
+  let activeSpy = null;
+  for (let i = 0; i < 15 && activeSpy !== '#deploy'; i++) {
+    await page.waitForTimeout(200);
+    activeSpy = await page.$eval('nav .spy.active', a => a.getAttribute('href'));
+  }
   log('scroll-spy activo en #deploy', activeSpy === '#deploy', activeSpy);
 
   log('cero errores de consola', consoleErrors.length === 0, consoleErrors.slice(0, 3).join(' || '));
@@ -174,7 +179,7 @@ const log = (name, ok, detail = '') => {
   await pR.evaluate(() => document.querySelector('#metrics').scrollIntoView({ block: 'center' }));
   await pR.waitForTimeout(500);
   const metricInstant = await pR.$$eval('.metric .num', els => els.map(e => e.textContent));
-  log('count-up instantáneo (reduced)', JSON.stringify(metricInstant) === JSON.stringify(['+8','11','+300K','#165']),
+  log('count-up instantáneo (reduced)', JSON.stringify(metricInstant) === JSON.stringify(['+17','11','+300K','#165']),
     metricInstant.join(' | '));
   await ctxR.close();
 
