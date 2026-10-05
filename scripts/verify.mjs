@@ -52,9 +52,13 @@ check('sin botones diff (siempre visibles)', !html.includes('class="more"') && !
 // Enlaces del copy
 for (const href of [
   'https://vicelec.es', 'https://numeroperdido.com', 'https://psicologiayorientacion.es',
-  'https://aliwood.com/es', 'mailto:eltaxo@gmail.com', 'tel:+34625187200',
+  'https://aliwood.com/es',
   'https://linkedin.com/in/albertoaznar',
 ]) check(`enlace ${href}`, html.includes(href));
+
+// v2026.10.6: contacto solo LinkedIn — sin email ni teléfono
+check('sin mailto/tel en contacto (ES)', !html.includes('mailto:') && !html.includes('tel:'));
+check('LinkedIn como CTA primario (ES)', html.includes('<a class="btn primary" href="https://linkedin.com/in/albertoaznar"'));
 
 // Assets
 const assets = [
@@ -102,6 +106,8 @@ if (existsSync(enPath)) {
   check('EN: scale +300,000 SKUs', en.includes('scale: +300,000 SKUs'));
   check('EN: education IES Abastos', en.includes('Higher Technical Degree in IT Systems Administration · IES Abastos'));
   check('EN: line-height:1 en .hero-line h1', /\.hero-line h1\{[^}]*line-height:1;/.test(en));
+  check('EN: sin mailto/tel en contacto', !en.includes('mailto:') && !en.includes('tel:'));
+  check('EN: LinkedIn como CTA primario', en.includes('<a class="btn primary" href="https://linkedin.com/in/albertoaznar"'));
 }
 
 if (failures) {
