@@ -27,6 +27,7 @@ function acceptsGzip(req) {
 createServer((req, res) => {
   let path = req.url.split('?')[0];
   if (path === '/') path = '/index.html';
+  else if (path.endsWith('/')) path += 'index.html'; // /en/ → /en/index.html (paridad con nginx try_files)
   const file = join(base, path);
   if (!existsSync(file)) {
     res.writeHead(404).end('404');

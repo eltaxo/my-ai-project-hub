@@ -67,6 +67,43 @@ for (const a of assets) check(`asset ${a}`, existsSync(join(root, 'public', a)))
 // reduced-motion
 check('prefers-reduced-motion en CSS', html.includes('@media (prefers-reduced-motion:reduce)'));
 
+// ===== v2026.10.5: fix O (line-height:1) =====
+check('line-height:1 en .hero-line h1 (fix O)', /\.hero-line h1\{[^}]*line-height:1;/.test(html));
+
+// ===== v2026.10.5: selector ES/EN + i18n =====
+check('selector .lang en nav (ES)', html.includes('<li class="lang">'));
+check('selector .lang en overlay móvil (ES)', html.includes('<div class="mm-lang">'));
+check('hreflang es/en/x-default (ES)', html.includes('hreflang="es"') && html.includes('hreflang="en" href="https://eltaxo.com/en/"') && html.includes('hreflang="x-default"'));
+check('og:locale:alternate (ES)', html.includes('og:locale:alternate" content="en_US"'));
+
+const enPath = join(root, 'public', 'en', 'index.html');
+check('existe public/en/index.html', existsSync(enPath));
+if (existsSync(enPath)) {
+  const en = readFileSync(enPath, 'utf8');
+  check('EN: lang="en"', en.includes('<html lang="en">'));
+  check('EN: title Business Continuity', en.includes('<title>Alberto Aznar · Product Manager · COO · FDE · Business Continuity</title>'));
+  check('EN: meta description', /<meta name="description" content="Working in digital since 2009/.test(en));
+  check('EN: canonical /en/', en.includes('<link rel="canonical" href="https://eltaxo.com/en/">'));
+  check('EN: hreflang es/en/x-default', en.includes('hreflang="es" href="https://eltaxo.com/"') && en.includes('hreflang="en"') && en.includes('hreflang="x-default"'));
+  check('EN: og:locale en_US + alternate es_ES', en.includes('og:locale" content="en_US"') && en.includes('og:locale:alternate" content="es_ES"'));
+  check('EN: selector EN activo', en.includes('aria-label="English" class="on" aria-current="true">EN'));
+  check('EN: selector .lang en overlay móvil', en.includes('<div class="mm-lang">'));
+  check('EN: cero em-dash (U+2014)', !en.includes('\u2014'));
+  check('EN: copy bio', en.includes("I've been working in digital since 2009"));
+  check('EN: copy The Mini Ofango', en.includes('Started my digital career running the customer care team'));
+  check('EN: copy // 8 commits', en.includes('// 8 commits'));
+  check('EN: copy About me / What I\'ve built / Experience', en.includes('<h2>About me</h2>') && en.includes("built</h2>") && en.includes('<h2>Experience</h2>'));
+  check('EN: copy Let\'s talk', en.includes("Let's talk<em>_</em>"));
+  check('EN: copy footer all rights reserved', en.includes('all rights reserved'));
+  check('EN: copy location Madrid, Spain', en.includes('San Sebastián de los Reyes · Madrid, Spain'));
+  check('EN: copy preloader', en.includes('compiling releases…') && en.includes('git fetching career…'));
+  check('EN: sin clichés IA', !/leverage|passionate|resilient|track record/i.test(en));
+  check('EN: Head of Support & Customer Care', en.includes('Head of Support &amp; Customer Care'));
+  check('EN: scale +300,000 SKUs', en.includes('scale: +300,000 SKUs'));
+  check('EN: education IES Abastos', en.includes('Higher Technical Degree in IT Systems Administration · IES Abastos'));
+  check('EN: line-height:1 en .hero-line h1', /\.hero-line h1\{[^}]*line-height:1;/.test(en));
+}
+
 if (failures) {
   console.error(`\n✗ ${failures} verificaciones fallidas`);
   process.exit(1);

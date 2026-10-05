@@ -183,8 +183,6 @@ const log = (name, ok, detail = '') => {
     metricInstant.join(' | '));
   await ctxR.close();
 
-  await browser.close();
-
   // ============ 6. Enlaces externos (HEAD directo) ============
   const links = [
     'https://vicelec.es', 'https://numeroperdido.com', 'https://psicologiayorientacion.es',
@@ -198,6 +196,111 @@ const log = (name, ok, detail = '') => {
     });
     log(`enlace externo ${url}`, ok);
   }
+
+  // ============ 7. v2026.10.5: fix O — margen de TINTA real (canvas) en 5 breakpoints ============
+  // La bbox tipográfica (ascent+descent) sobresale con line-height:1; lo que no puede
+  // tocar el clip es la TINTA de los glifos: actualBoundingBoxAscent/Descent (canvas).
+  const SHOTS = '/tmp/o-fix';
+  for (const w of [390, 412, 768, 1024, 1280]) {
+    const ctx5 = await browser.newContext({ viewport: { width: w, height: w === 412 ? 915 : 844 } });
+    const p5 = await ctx5.newPage();
+    await p5.goto(BASE, { waitUntil: 'domcontentloaded' });
+    await p5.waitForFunction(() => document.fonts.status === 'loaded', { timeout: 6000 }).catch(() => {});
+    await p5.waitForTimeout(1500); // asentado (riseUp 890ms + margen)
+    const m = await p5.evaluate(() => {
+      const line = document.querySelector('.hero-line');
+      const h1 = line.querySelector('h1');
+      const cs = getComputedStyle(h1);
+      const fs = parseFloat(cs.fontSize);
+      const lineBox = line.getBoundingClientRect();
+      const h1Box = h1.getBoundingClientRect();
+      const c = document.createElement('canvas');
+      const g = c.getContext('2d');
+      g.font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily;
+      const met = g.measureText(h1.textContent);
+      const A = met.fontBoundingBoxAscent, D = met.fontBoundingBoxDescent;
+      const halfLeading = (h1Box.height - (A + D)) / 2;
+      const baseline = h1Box.top + halfLeading + A;
+      const inkTop = baseline - met.actualBoundingBoxAscent;
+      const inkBottom = baseline + met.actualBoundingBoxDescent;
+      return {
+        fs,
+        top: +(inkTop - lineBox.top).toFixed(2),
+        bottom: +(lineBox.bottom - inkBottom).toFixed(2),
+      };
+    });
+    const ok = m.top > 0 && m.bottom > 0;
+    log(`fix O: margen de tinta real @${w} (asentado)`, ok,
+      ok ? `fs=${m.fs}px · top ${m.top}px / bottom ${m.bottom}px` : JSON.stringify(m));
+    // capturas del glifo en 3 momentos (solo móvil 390 y 412×915): reinicio determinista de riseUp
+    if (w === 390 || w === 412) {
+      await p5.evaluate(() => {
+        document.querySelectorAll('.hero-line h1').forEach(h => {
+          h.style.animation = 'none';
+          void h.offsetWidth;
+          h.style.animation = '';
+        });
+      });
+      const clip = await p5.evaluate(() => {
+        const r = document.querySelector('.hero-line').getBoundingClientRect();
+        const pad = 48;
+        return {
+          x: Math.max(0, r.left - pad), y: Math.max(0, r.top - pad),
+          width: Math.min(innerWidth, r.right + pad) - Math.max(0, r.left - pad),
+          height: Math.min(innerHeight, r.bottom + pad) - Math.max(0, r.top - pad),
+        };
+      });
+      await p5.waitForTimeout(200);
+      await p5.screenshot({ path: `${SHOTS}-${w}-entrada.png`, clip });
+      await p5.waitForTimeout(300);
+      await p5.screenshot({ path: `${SHOTS}-${w}-mitad.png`, clip });
+      await p5.waitForTimeout(600);
+      await p5.screenshot({ path: `${SHOTS}-${w}-asentado.png`, clip });
+    }
+    await ctx5.close();
+  }
+
+  // ============ 8. v2026.10.5: versión EN ============
+  const enCtx = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const enPage = await enCtx.newPage();
+  const enErrors = [];
+  enPage.on('console', m => { if (m.type() === 'error') enErrors.push(m.text()); });
+  enPage.on('pageerror', e => enErrors.push('pageerror: ' + e.message));
+  await enPage.goto(BASE + '/en/', { waitUntil: 'networkidle' });
+  const enTitle = await enPage.title();
+  log('EN: title Business Continuity', enTitle === 'Alberto Aznar · Product Manager · COO · FDE · Business Continuity', enTitle);
+  const enLang = await enPage.getAttribute('html', 'lang');
+  log('EN: lang=en', enLang === 'en', enLang);
+  log('EN: cero errores de consola', enErrors.length === 0, enErrors.join(' | ').slice(0, 120));
+  const enSel = await enPage.evaluate(() => {
+    const a = document.querySelector('nav ul .lang a.on');
+    return a ? { href: a.getAttribute('href'), label: a.getAttribute('aria-label'), current: a.getAttribute('aria-current') } : null;
+  });
+  log('EN: selector EN activo (/en/, aria-current)', !!enSel && enSel.href === '/en/' && enSel.current === 'true', JSON.stringify(enSel));
+  const enHrefs = await enPage.evaluate(() => [...document.querySelectorAll('link[rel="alternate"]')].map(l => l.getAttribute('hreflang') + '→' + l.getAttribute('href')).join(' '));
+  log('EN: hreflang es/en/x-default', enHrefs === 'es→https://eltaxo.com/ en→https://eltaxo.com/en/ x-default→https://eltaxo.com/', enHrefs);
+  const enCountOk = await enPage.waitForFunction(
+    () => document.querySelector('.metric .num').textContent === '+17',
+    { timeout: 6000 }).then(() => true, () => false);
+  const enCount = await enPage.evaluate(() => document.querySelector('.metric .num').textContent);
+  log('EN: count-up +17 en load', enCountOk, enCount);
+  const enOverflow = await enPage.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  log('EN: overflow 0 @1280', enOverflow === 0, enOverflow + 'px');
+  // selector ES en EN: el link ES apunta a /
+  const esHref = await enPage.getAttribute('nav ul .lang a:not(.on)', 'href');
+  log('EN: selector ES → /', esHref === '/', esHref);
+  // overlay móvil EN
+  await enCtx.close();
+  const enMob = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const enMobPage = await enMob.newPage();
+  await enMobPage.goto(BASE + '/en/', { waitUntil: 'domcontentloaded' });
+  const mmLang = await enMobPage.evaluate(() => {
+    const el = document.querySelector('#mobile-menu .mm-lang');
+    return el ? { visible: getComputedStyle(el).display !== 'none', on: el.querySelector('a.on')?.textContent, href: el.querySelector('a.on')?.getAttribute('href') } : null;
+  });
+  log('EN: selector en overlay móvil (EN on, /en/)', !!mmLang && mmLang.visible && mmLang.on === 'EN' && mmLang.href === '/en/', JSON.stringify(mmLang));
+  await enMob.close();
+  await browser.close();
 
   // ============ Resumen ============
   const failed = results.filter(r => !r.ok);
